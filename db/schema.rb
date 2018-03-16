@@ -10,20 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316073330) do
+ActiveRecord::Schema.define(version: 20180316142108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
     t.integer  "score"
+    t.integer  "match_id"
+    t.integer  "winner_id"
+    t.integer  "loser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["loser_id"], name: "index_games_on_loser_id", using: :btree
+    t.index ["match_id"], name: "index_games_on_match_id", using: :btree
+    t.index ["winner_id"], name: "index_games_on_winner_id", using: :btree
   end
 
   create_table "matches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "matches_teams", id: false, force: :cascade do |t|
+    t.integer "team_id",  null: false
+    t.integer "match_id", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_players_on_team_id", using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
@@ -32,11 +52,6 @@ ActiveRecord::Schema.define(version: 20180316073330) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "games", "matches"
+  add_foreign_key "players", "teams"
 end
