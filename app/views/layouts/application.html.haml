@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+    %title Manager Portal | Dashboard
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css", :rel => "stylesheet", :type => "text/css"}/
+    = favicon_link_tag 'favicon.ico'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    = csrf_meta_tags
+  %body{:class => "skin-blue sidebar-mini fixed #{params[:controller].parameterize} #{action_name}"}
+    .wrapper
+      = render partial: 'layouts/header'
+      = render partial: 'layouts/sidebar'
+      / Content Wrapper. Contains page content
+      .content-wrapper
+        / Main content
+        %section.content
+          - if notice
+            .alert.alert-success.alert-dismissable
+              %i.fa.fa-check
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+              %b= notice
+          - if alert
+            .alert.alert-danger.alert-dismissable
+              %i.fa.fa-ban
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+              %b= alert
+          = yield
+        / /.content
+      / /.content-wrapper
+      / Main Footer
+      %footer.main-footer
+        / To the right
+        .pull-right.hidden-xs
+        / Default to the left
+        %strong
+          Duc Anh Nguyen - Mar 2018
+      .control-sidebar-bg{:style => "position: fixed; height: auto;"}
+    / ./wrapper
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true

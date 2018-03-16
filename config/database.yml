@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: fantasy_football_development
+
+test:
+  <<: *default
+  database: fantasy_football_test
+
+production:
+  <<: *default
+  database: fantasy_football_production
+  username: fantasy_football
+  password: <%= ENV['DEMO_DATABASE_PASSWORD'] %>
