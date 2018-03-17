@@ -1,24 +1,27 @@
-# README
+## Fantasy Football
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Ruby on Rails application. 
 
-Things you may want to cover:
+Tech stack:
 
-* Ruby version
+* AdminLte2 for Control Panel Template
 
-* System dependencies
+* Postgres database
 
-* Configuration
+* RSpec automation test
 
-* Database creation
+## Some assumptions
 
-* Database initialization
+Because I did this exercise at weekend so I could not clarify a few thing, therefore I made a couple of assumptions:
 
-* How to run the test suite
+* User and Player are the same entity
 
-* Services (job queues, cache servers, search engines, etc.)
+* The exercise mentions `Match` but asks for `Creating and managing games between teams`, so I let the (application) user manage games through matches
 
-* Deployment instructions
+## Testing
 
-* ...
+To test, run `rspec` (96.6% covered)
+
+## Deployment
+
+Site is available at https://fantasy-football-duc-anh-nguye.herokuapp.com/
