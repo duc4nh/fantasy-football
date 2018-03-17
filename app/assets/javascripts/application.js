@@ -13,6 +13,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require chart
 //= require jquery.slimscroll.min
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap.min

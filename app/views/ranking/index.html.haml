@@ -25,4 +25,20 @@
                         %tr{:role => "row"}
                           - attrs.each do |attr|
                             %td= team[attr]
-     
+
+  .team-ranking
+  = javascript_include_tag "jquery"
+  = javascript_include_tag "chart_data"
+  = content_tag :div, '', id: "chart_data", data: {chart_data: @chart_data}
+  .row
+    .col-xs-12
+      / BAR CHART
+      .box.box-success
+        .box-header.with-border
+          %h3.box-title Teams ranking based on winning percentage
+          .box-tools.pull-right
+            %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+              %i.fa.fa-minus
+        .box-body
+          .chart
+            %canvas#barChart{:height => "460", :style => "height: 230px; width: 441px;", :width => "882"}
