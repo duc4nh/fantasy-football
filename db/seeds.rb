@@ -6,8 +6,8 @@ p5 = Player.create(first_name: 'Jared', last_name: 'Abbrederis')
 p6 = Player.create(first_name: 'Duke', last_name: 'Abbruzzi')
  
 t1 = Team.create(name: 'Raging Crusaders', players: [p1,p2])
-t2 = Team.create(name: 'Pride', players: [p3,p4])
-t3 = Team.create(name: 'Privateers', players: [p5])
+t2 = Team.create(name: 'Pride', players: [p3])
+t3 = Team.create(name: 'Privateers', players: [p4])
 
 g1 = Game.new(winner: t1, loser: t2, score: 4)
 g2 = Game.new(winner: t2, loser: t1, score: 5)

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'home#index'
+  root to: 'ranking#index'
+  get  '/ranking', to: 'ranking#index'
+
+  resources :players
+  resources :matches, except: [:delete]
+  resources :teams, only: [:index, :new, :create]
 end

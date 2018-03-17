@@ -13,5 +13,21 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery.slimscroll.min
+//= require jquery.dataTables.min
+//= require dataTables.bootstrap.min
 //= require app
 //= require_tree .
+
+$(document).ready(function(e) {
+  // data table
+  var default_number_column_sotring = $("#default_number_column_sotring").attr('data-number');
+  if (typeof(default_number_column_sotring) == "undefined"){
+    default_number_column_sotring = 0;
+  }
+
+  $('.adminlte2datatable').DataTable();
+
+  //hide and unbind icon sort in table
+  $(".remove-icon-sorting").removeClass('sorting_desc').removeClass('sorting').unbind();
+});

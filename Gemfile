@@ -48,11 +48,7 @@ group :production do
 end
 
 gem 'haml'
-# gem 'grape'
-# gem 'kaminari'
 gem 'faker', '~> 1.7', '>= 1.7.3'
 gem 'adminlte2-rails', '~> 0.0.6'
-# gem 'webpacker'
-# gem 'foreman'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
