@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get  '/ranking', to: 'ranking#index'
 
   resources :players
-  resources :matches, except: [:delete]
+  resources :matches, only: [:index, :new, :create]
   resources :teams, only: [:index, :new, :create]
 end

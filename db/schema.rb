@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 20180316142108) do
   end
 
   create_table "matches", force: :cascade do |t|
+    t.integer  "winner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["winner_id"], name: "index_matches_on_winner_id", using: :btree
   end
 
   create_table "matches_teams", id: false, force: :cascade do |t|

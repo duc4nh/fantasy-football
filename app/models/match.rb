@@ -3,6 +3,7 @@
 # Table name: matches
 #
 #  id         :integer          not null, primary key
+#  winner_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -10,6 +11,7 @@
 class Match < ApplicationRecord
   has_and_belongs_to_many :teams
   has_many :games
+  belongs_to :winner, :class_name => 'Team', optional: true
   
   validate :validate_games
   def validate_games

@@ -7,7 +7,7 @@
       - case attr
       - when :team
         .form-group
-          %label.col-md-3.control-label= t(attr)
+          %label.col-md-3.control-label Team (optional)
           .col-md-9
             %select.form-control{:name => 'player[team_id]'}
               %option{:value => ''} N/A
@@ -15,6 +15,6 @@
                 %option{:value => team.id, :selected => @player.team_id == team.id ? '' : false}= team.name
       - else
         .form-group
-          %label.col-md-3.control-label= t(attr)
+          %label.col-md-3.control-label= t(attr) + '*'
           .col-md-9
             %input.form-control{:type => "text", :name => "player[#{attr.to_s}]", :placeholder => "...", :value => @player[attr], :required => ''}

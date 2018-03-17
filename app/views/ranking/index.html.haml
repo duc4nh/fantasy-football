@@ -1,8 +1,28 @@
 %section.content-header
-  %h3 Dashboard
+  %h1 Ranking
 %section.content
   .row
     .col-xs-12
-      .box
+      .box.box-primary
         .box-header.with-border
         .box-body
+          - attrs = [:match_winning_percentage, :name, :winning_games, :losing_games, :matches_played, :winning_matches]
+          / data-table
+          #adminlte2datatable_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
+            .row
+              .col-sm-12
+                %table.adminlte2datatable.table.table-bordered.table-striped.dataTable{"aria-describedby" => "adminlte2datatable_info", :role => "grid"}
+                  %thead
+                    %tr{:role => "row"}
+                      - attrs.each_with_index do |attr, index|
+                        %th.sorting_asc{"aria-controls" => "adminlte2datatable", :colspan => "1", :rowspan => "1", :tabindex => index}= t(attr)
+                  %tbody
+                    - if @stats.blank?
+                      %tr
+                        %td{:colspan => attrs.count} There is no resource yet
+                    - else
+                      - @stats.each do |team|
+                        %tr{:role => "row"}
+                          - attrs.each do |attr|
+                            %td= team[attr]
+     
