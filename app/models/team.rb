@@ -17,6 +17,7 @@ class Team < ApplicationRecord
   
   validates :name, presence: true
   validate :validate_players
+  
   def validate_players
     errors.add(:players, "too many players") if players.size > 2
     errors.add(:players, "no player") if players.size < 1

@@ -16,7 +16,4 @@ RSpec.describe Match, type: :model do
     it { should belong_to(:winner) }
     it { should have_and_belong_to_many(:teams) }
   end
-
-  describe "Check validation attribute" do
-  end
 end
